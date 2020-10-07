@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+from decouple import config
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,12 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL='authentication.User'
+AUTH_USER_MODEL = 'authentication.User'
 
 # Application definition
 
-REST_FRAMEWORK={
-    'NON_FIELDS_ERRORS_KEY':'error'
+REST_FRAMEWORK = {
+    'NON_FIELDS_ERRORS_KEY': 'error',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }
 
 INSTALLED_APPS = [
@@ -125,3 +128,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = config('Email')
+EMAIL_HOST_PASSWORD = config('Password')
+# https://myaccount.google.com/lesssecureapps
