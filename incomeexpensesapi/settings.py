@@ -27,8 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL='authentication.User'
 
 # Application definition
+
+REST_FRAMEWORK={
+    'NON_FIELDS_ERRORS_KEY':'error'
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'authentication'
 ]
 
 MIDDLEWARE = [
