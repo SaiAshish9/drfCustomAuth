@@ -71,7 +71,8 @@ INSTALLED_APPS = [
     'drf_yasg',
     'corsheaders',
     'expenses',
-    'income'
+    'income',
+    'userstats'
 ]
 
 CORS_ORIGIN_WHITELIST = [
