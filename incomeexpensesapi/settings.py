@@ -72,7 +72,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'expenses',
     'income',
-    'userstats'
+    'userstats',
+    'social_auth'
 ]
 
 CORS_ORIGIN_WHITELIST = [

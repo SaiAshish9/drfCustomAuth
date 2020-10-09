@@ -20,12 +20,12 @@ from django.urls import reverse
 from .utils import Util
 from django.shortcuts import redirect
 from django.http import HttpResponsePermanentRedirect
-import os
+# import os
 
 
 class CustomRedirect(HttpResponsePermanentRedirect):
 
-    allowed_schemes = [os.environ.get('APP_SCHEME'), 'http', 'https']
+    allowed_schemes = ["incomeexpenses", 'http', 'https']
 
 
 class RegisterView(generics.GenericAPIView):
@@ -131,7 +131,7 @@ class PasswordTokenCheckAPI(generics.GenericAPIView):
             if redirect_url and len(redirect_url) > 3:
                 return CustomRedirect(redirect_url+'?token_valid=True&message=Credentials Valid&uidb64='+uidb64+'&token='+token)
             else:
-                return CustomRedirect(os.environ.get('FRONTEND_URL', '')+'?token_valid=False')
+                return CustomRedirect('FRONTEND_URL'+'?token_valid=False')
 
         except DjangoUnicodeDecodeError as identifier:
             try:
